@@ -12,7 +12,6 @@ variable "delimiter" {
 
 variable "name" {
   type        = string
-  default     = ""
   description = "Solution name, e.g. 'app' or 'jenkins'"
 }
 
