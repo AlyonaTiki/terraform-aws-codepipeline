@@ -34,21 +34,14 @@ variable "tags" {
   description = "Additional tags"
 }
 
-variable "bucket" {
+variable "bucket-codepipeline" {
   type = "string"
-  description = "bucket name"
+  description = "bucket name where files will be stored"
 }
 
-variable "owner-source" {
+variable "bucket-destination" {
   type = "string"
-  default = "ThirdParty"
-  description = "Possible values are AWS, Custom and ThirdParty"
-}
-
-variable "owner-deploy" {
-  type = "string"
-  default = "AWS"
-  description = "Possible values are AWS, Custom and ThirdParty"
+  description = "bucket name to extract files to"
 }
 
 variable "oauthtoken" {
@@ -77,14 +70,3 @@ variable "version_" {
   description = "version name"
 }
 
-variable "provider_source" {
-  type = "string"
-  default = "GitHub"
-  description = "Provider of stage 'source' name, e.g. 'CodeBuild', 'GitHub', 'S3'"
-}
-
-variable "provider_deploy" {
-  type = "string"
-  default = "S3"
-  description = "Provider of stage 'source' name, e.g. 'CodeBuild', 'GitHub', 'S3'"
-}

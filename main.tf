@@ -89,7 +89,7 @@ resource "aws_codepipeline" "pipeline" {
   role_arn = join("", aws_iam_role.default.*.arn)
 
   artifact_store {
-    location = var.bucket
+    location = var.bucket-codepipeline
     type     = "S3"
   }
 
@@ -100,8 +100,8 @@ resource "aws_codepipeline" "pipeline" {
     action {
       name             = "Source"
       category         = "Source"
-      owner            = var.owner-source
-      provider         = var.provider_source
+      owner            = "ThirdParty"
+      provider         = "GitHub"
       version          = var.version_
       output_artifacts = ["SourceArtifact"]
 
@@ -121,14 +121,14 @@ resource "aws_codepipeline" "pipeline" {
     action {
       name            = "Deploy"
       category        = "Deploy"
-      owner           = var.owner-deploy
-      provider        = var.provider_deploy
+      owner           = "AWS"
+      provider        = "S3"
       input_artifacts = ["SourceArtifact"]
       version         = var.version_
 
       //unzip files and upload to bucket
       configuration = {
-        BucketName = var.bucket
+        BucketName = var.bucket-destination
         Extract = "true"
       }
     }
