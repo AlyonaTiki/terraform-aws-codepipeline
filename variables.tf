@@ -63,10 +63,10 @@ variable "branch" {
   description = "GitHub branch name"
 }
 
-variable "version_" {
+variable "version_num" {
   type = string
-  default = ""
-  description = "version name"
+  default = "1"
+  description = "version number"
 }
 
 variable "region" {
