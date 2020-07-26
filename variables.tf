@@ -35,38 +35,44 @@ variable "tags" {
 }
 
 variable "bucket-codepipeline" {
-  type = "string"
+  type = string
   description = "bucket name where files will be stored"
 }
 
 variable "bucket-destination" {
-  type = "string"
+  type = string
   description = "bucket name to extract files to"
 }
 
 variable "oauthtoken" {
-  type = "string"
+  type = string
   description = "Authentication Token"
 }
 variable "repo" {
-  type = "string"
+  type = string
   description = "GitHub repository name"
 }
 
 variable "owner" {
-  type = "string"
+  type = string
   description = "GitHub account name"
 }
 
 variable "branch" {
-  type = "string"
+  type = string
   default = "master"
   description = "GitHub branch name"
 }
 
 variable "version_" {
-  type = "string"
+  type = string
   default = ""
   description = "version name"
+}
+
+variable "region" {
+  type        = string
+  default = "us-east-1"
+  description = "AWS Region, e.g. us-east-1. Used as CodeBuild ENV variable when building Docker images. [For more info](http://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html)"
 }
 

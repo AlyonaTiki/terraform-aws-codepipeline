@@ -19,6 +19,10 @@ module "label_codepipeline" {
   tags       = var.tags
 }
 
+provider "aws" {
+  region = var.region
+}
+
 resource "aws_iam_policy" "codebuild" {
   count  = var.enabled ? 1 : 0
   name   = module.label_codepipeline.id
@@ -41,12 +45,10 @@ data "aws_iam_policy_document" "policy_doc" {
       "cloudwatch:*",
       "s3:*",
       "cloudformation:*",
-//      "lambda:*",
-      "codebuild:*",
-
+      "codebuild:*"
     ]
 
-    resources = "*"
+    resources = ["*"]
     effect    = "Allow"
 
   }
