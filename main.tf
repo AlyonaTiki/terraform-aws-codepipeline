@@ -126,7 +126,7 @@ resource "aws_codepipeline" "pipeline" {
       owner           = "AWS"
       provider        = "S3"
       input_artifacts = ["SourceArtifact"]
-      version         = var.version_
+      version         = var.version_num
 
       //unzip files and upload to bucket
       configuration = {
